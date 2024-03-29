@@ -1,0 +1,263 @@
+[
+    {
+        "id": "52e85a4567605ca9",
+        "type": "tab",
+        "label": "Flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "77fd809067a4d0e0",
+        "type": "mqtt in",
+        "z": "52e85a4567605ca9",
+        "name": "",
+        "topic": "/topic/temperature",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "8066bf8146b9e783",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 140,
+        "wires": [
+            [
+                "3cf0e6d8dc7fabf8"
+            ]
+        ]
+    },
+    {
+        "id": "0243cd895b3197c2",
+        "type": "aedes broker",
+        "z": "52e85a4567605ca9",
+        "d": true,
+        "name": "",
+        "mqtt_port": 1883,
+        "mqtt_ws_bind": "port",
+        "mqtt_ws_port": "",
+        "mqtt_ws_path": "",
+        "cert": "",
+        "key": "",
+        "certname": "",
+        "keyname": "",
+        "persistence_bind": "memory",
+        "dburl": "",
+        "usetls": false,
+        "x": 210,
+        "y": 280,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "61999f88c093ab24",
+        "type": "mqtt in",
+        "z": "52e85a4567605ca9",
+        "name": "",
+        "topic": "/topic/humidity",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "8066bf8146b9e783",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 180,
+        "wires": [
+            [
+                "d9bb76cc771ac305"
+            ]
+        ]
+    },
+    {
+        "id": "fba229da1f65a028",
+        "type": "debug",
+        "z": "52e85a4567605ca9",
+        "name": "Temperature",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "fe94f312072ee7ba",
+        "type": "debug",
+        "z": "52e85a4567605ca9",
+        "name": "Humidity",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3cf0e6d8dc7fabf8",
+        "type": "function",
+        "z": "52e85a4567605ca9",
+        "name": "Temp String",
+        "func": "let head = \"Temperature\";\n\nmsg.payload = head + \": \" + msg.payload;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 140,
+        "wires": [
+            [
+                "fba229da1f65a028"
+            ]
+        ]
+    },
+    {
+        "id": "d9bb76cc771ac305",
+        "type": "function",
+        "z": "52e85a4567605ca9",
+        "name": "Humid String",
+        "func": "let head = \"Humidity\";\n\nmsg.payload = head + \": \" + msg.payload;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 180,
+        "wires": [
+            [
+                "fe94f312072ee7ba"
+            ]
+        ]
+    },
+    {
+        "id": "8c4cd24ab212d249",
+        "type": "mongodb4",
+        "z": "52e85a4567605ca9",
+        "clientNode": "3d4e5d0ab7e70847",
+        "mode": "collection",
+        "collection": "TempHumid",
+        "operation": "insertOne",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 420,
+        "y": 340,
+        "wires": [
+            [
+                "5269c7d3f3822189"
+            ]
+        ]
+    },
+    {
+        "id": "5269c7d3f3822189",
+        "type": "debug",
+        "z": "52e85a4567605ca9",
+        "name": "Debug DB",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "eb86edacd5646f43",
+        "type": "mqtt in",
+        "z": "52e85a4567605ca9",
+        "name": "",
+        "topic": "/topic/dataset",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "8066bf8146b9e783",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 340,
+        "wires": [
+            [
+                "8c4cd24ab212d249"
+            ]
+        ]
+    },
+    {
+        "id": "8066bf8146b9e783",
+        "type": "mqtt-broker",
+        "name": "Local",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "3d4e5d0ab7e70847",
+        "type": "mongodb4-client",
+        "name": "",
+        "protocol": "mongodb",
+        "hostname": "localhost",
+        "port": "27017",
+        "dbName": "MQTT_Sensor",
+        "appName": "",
+        "authSource": "",
+        "authMechanism": "DEFAULT",
+        "tls": false,
+        "tlsCAFile": "",
+        "tlsCertificateKeyFile": "",
+        "tlsInsecure": false,
+        "connectTimeoutMS": "30000",
+        "socketTimeoutMS": "0",
+        "minPoolSize": "0",
+        "maxPoolSize": "100",
+        "maxIdleTimeMS": "0",
+        "uri": "",
+        "advanced": "{}",
+        "uriTabActive": "tab-uri-simple"
+    }
+]
