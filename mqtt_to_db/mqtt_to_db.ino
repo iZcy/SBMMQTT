@@ -74,7 +74,7 @@ void setup() {
 }
 
 void loop() {
-  delay(5000);
+  delay(100);
   if (!client.connected()) {
     reconnect();
   }
