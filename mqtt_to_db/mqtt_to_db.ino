@@ -100,13 +100,13 @@ void loop() {
     sensor_doc["humidity"] = hum;
 
     serializeJson(sensor_doc, buffer);
-    Serial.println(buffer);
+    // Serial.println(buffer);
 
     client.publish("/topic/dataset", buffer);
 
-    Serial.print("Temperature: ");
-    Serial.println(temp);
-    Serial.print("Humidity: ");
-    Serial.println(hum);
+    // Serial.print("Temperature: ");
+    // Serial.println(temp);
+    // Serial.print("Humidity: ");
+    // Serial.println(hum);
   }
 }
