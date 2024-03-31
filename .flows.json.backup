@@ -24,8 +24,7 @@
         "y": 140,
         "wires": [
             [
-                "3cf0e6d8dc7fabf8",
-                "fb8a27659bbce57b"
+                "3cf0e6d8dc7fabf8"
             ]
         ]
     },
@@ -70,8 +69,7 @@
         "y": 180,
         "wires": [
             [
-                "d9bb76cc771ac305",
-                "29b684c8e2dcd637"
+                "d9bb76cc771ac305"
             ]
         ]
     },
@@ -208,62 +206,6 @@
         ]
     },
     {
-        "id": "fb8a27659bbce57b",
-        "type": "ui_gauge",
-        "z": "52e85a4567605ca9",
-        "name": "",
-        "group": "f4836054bb7703ba",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Temperature",
-        "label": "units",
-        "format": "{{value}}",
-        "min": "20",
-        "max": "50",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "diff": false,
-        "className": "",
-        "x": 410,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "29b684c8e2dcd637",
-        "type": "ui_gauge",
-        "z": "52e85a4567605ca9",
-        "name": "",
-        "group": "f4836054bb7703ba",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Humidity",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "diff": false,
-        "className": "",
-        "x": 400,
-        "y": 220,
-        "wires": []
-    },
-    {
         "id": "8066bf8146b9e783",
         "type": "mqtt-broker",
         "name": "Local",
@@ -317,24 +259,5 @@
         "uri": "",
         "advanced": "{}",
         "uriTabActive": "tab-uri-simple"
-    },
-    {
-        "id": "f4836054bb7703ba",
-        "type": "ui_group",
-        "name": "Dashboard",
-        "tab": "61cd882d7c8b5564",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "61cd882d7c8b5564",
-        "type": "ui_tab",
-        "name": "Dashboard",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
     }
 ]
